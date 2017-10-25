@@ -14,12 +14,18 @@ public class Controller {
     private Map<String, Account> storage = new HashMap<>();
 
     @GetMapping("/account/{owner}")
-    public Account GETOwner(@PathVariable String owner) {
+    public Account loadOwner(@PathVariable String owner) {
         return storage.get(owner);
     }
 
+    @PostMapping("/account/{owner}/transaction")
+    public Transaction addTransaction(@PathVariable String owner, @RequestBody Transaction transaction) {
+        storage.get(owner).getTransactions().add(transaction);
+        return transaction;
+    }
+
     @PostMapping("/account")
-    public Account POSTOwner(@RequestBody Account account) {
+    public Account addAccount(@RequestBody Account account) {
         return storage.put(account.getOwner(), account);
     }
 }
