@@ -1,12 +1,16 @@
 package com.vtrbtf.minibank;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.math.BigDecimal;
 
 public class Transaction {
     private final String name;
     private final BigDecimal value;
 
-    public Transaction(String name, BigDecimal value) {
+    @JsonCreator
+    public Transaction(@JsonProperty("name") String name, @JsonProperty("value") BigDecimal value) {
         this.name = name;
         this.value = value;
     }

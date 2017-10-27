@@ -1,5 +1,8 @@
 package com.vtrbtf.minibank;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 public class Account {
@@ -7,7 +10,8 @@ public class Account {
     private final String type;
     private final List<Transaction> transactions;
 
-    public Account(String id, String type, List<Transaction> transactions) {
+    @JsonCreator
+    public Account(@JsonProperty("id") String id, @JsonProperty("type") String type, @JsonProperty("transactions") List<Transaction> transactions) {
         this.id = id;
         this.type = type;
         this.transactions = transactions;

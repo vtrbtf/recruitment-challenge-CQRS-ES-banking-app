@@ -2,6 +2,7 @@ package com.vtrbtf.minibank;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.Module;
+import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,6 +16,11 @@ public class MinibankApplication {
 
 	@Bean
 	public Module parameterNamesModule() {
-		return new ParameterNamesModule(JsonCreator.Mode.PROPERTIES);
+		return new ParameterNamesModule();
+	}
+
+	@Bean
+	public Module jdk8Module() {
+		return new Jdk8Module();
 	}
 }

@@ -1,5 +1,8 @@
 package com.vtrbtf.minibank;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +13,8 @@ public class Holder {
     private String CNPJ; //TODO: Brazillian model or should I try to abstract ?
     private List<Account> accounts = new ArrayList<>();
 
-    public Holder(String name, String type) {
+    @JsonCreator
+    public Holder(@JsonProperty("name") String name, @JsonProperty("type") String type) {
         this.name = name;
         this.type = type;
     }
