@@ -1,12 +1,11 @@
-package com.vtrbtf.minibank.application.holder;
+package com.vtrbtf.minibank.application.client.command;
 
 import lombok.Value;
 import lombok.experimental.PackagePrivate;
 
 
 @Value
-@PackagePrivate
-class CreateHolderRequest {
+public class EnrollClient {
     String name;
     String type;
     String CPF;

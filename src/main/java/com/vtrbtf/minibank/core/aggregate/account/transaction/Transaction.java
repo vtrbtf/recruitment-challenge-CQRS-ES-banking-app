@@ -1,12 +1,12 @@
-package com.vtrbtf.minibank.core.domain.transaction;
+package com.vtrbtf.minibank.core.aggregate.account.transaction;
 
 import lombok.Value;
+import lombok.experimental.NonFinal;
 
 import java.math.BigDecimal;
 
-@Value
+@Value @NonFinal
 public class Transaction {
-    String id;
     String name;
     BigDecimal value;
 }
