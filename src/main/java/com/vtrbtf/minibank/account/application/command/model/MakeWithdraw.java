@@ -1,11 +1,15 @@
 package com.vtrbtf.minibank.account.application.command.model;
 
-import lombok.Value;
+import com.vtrbtf.minibank.account.application.command.infrastructure.MakeWithdrawRequest;
 
 import java.math.BigDecimal;
 
 public class MakeWithdraw extends MakeTransaction {
-    public MakeWithdraw(String description, BigDecimal value) {
-        super(description, value);
+    public MakeWithdraw(String id, String description, BigDecimal value) {
+        super(id, description, value);
+    }
+
+    public MakeWithdraw(String id, MakeWithdrawRequest request) {
+        this(id, request.getDescription(), request.getValue());
     }
 }
