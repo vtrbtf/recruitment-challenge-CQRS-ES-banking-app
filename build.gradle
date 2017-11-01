@@ -30,19 +30,24 @@ repositories {
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-actuator')
-	compile('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
+	//compile('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
 	compile('org.springframework.retry:spring-retry')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.axonframework:axon:3.0.6')
-	testCompile group: 'org.axonframework', name: 'axon-test', version: '3.0.6'
-	testCompile group: 'org.axonframework', name: 'axon-spring', version: '3.0.6'
+	//compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb', version: '2.0.0.M5'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-amqp', version: '2.0.0.M5'
+	compile group: 'org.axonframework', name: 'axon-spring-boot-starter', version: '3.0.6'
+	compile group: 'org.axonframework', name: 'axon-mongo', version: '3.0.6'
 	compile group: 'org.axonframework', name: 'axon-amqp', version: '3.0.6'
+	compile group: 'org.axonframework', name: 'axon-spring', version: '3.0.6'
 	compile('org.springframework.boot:spring-boot-starter-webflux')
 	compile('com.google.guava:guava:23.3-jre')
 	compile ('com.fasterxml.jackson.module:jackson-modules-java8:2.9.2')
 	compile ('br.com.caelum.stella:caelum-stella-core:2.1.2')
 	compileOnly('org.projectlombok:lombok')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
-	testCompile('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
+	//testCompile('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
 	testCompile('io.projectreactor:reactor-test')
+	testCompile group: 'org.axonframework', name: 'axon-test', version: '3.0.6'
+
 }

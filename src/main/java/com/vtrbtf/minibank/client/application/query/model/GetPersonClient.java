@@ -1,4 +1,4 @@
-package com.vtrbtf.minibank.client.application.query;
+package com.vtrbtf.minibank.client.application.query.model;
 
 import lombok.Data;
 

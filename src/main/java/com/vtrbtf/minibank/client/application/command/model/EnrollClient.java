@@ -1,4 +1,4 @@
-package com.vtrbtf.minibank.client.application.command;
+package com.vtrbtf.minibank.client.application.command.model;
 
 import lombok.Value;
 

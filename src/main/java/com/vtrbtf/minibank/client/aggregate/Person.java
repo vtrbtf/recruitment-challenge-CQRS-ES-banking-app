@@ -1,8 +1,12 @@
 package com.vtrbtf.minibank.client.aggregate;
 
-import lombok.Value;
+import java.util.List;
 
-@Value
 public class Person extends Client {
-    String CPF;
+    private String CPF;
+
+    public Person(String id, List<String> accounts, String CPF) {
+        super(id, accounts);
+        this.CPF = CPF;
+    }
 }
