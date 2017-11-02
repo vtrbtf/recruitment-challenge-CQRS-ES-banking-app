@@ -1,6 +1,6 @@
 package com.vtrbtf.minibank.account.application.command.model;
 
-import com.vtrbtf.minibank.account.application.command.infrastructure.MakeWithdrawRequest;
+import com.vtrbtf.minibank.account.application.command.infrastructure.http.payload.MakeWithdrawRequest;
 
 import java.math.BigDecimal;
 

@@ -1,4 +1,4 @@
-package com.vtrbtf.minibank.account.application.event;
+package com.vtrbtf.minibank.account.event;
 
 import java.math.BigDecimal;
 

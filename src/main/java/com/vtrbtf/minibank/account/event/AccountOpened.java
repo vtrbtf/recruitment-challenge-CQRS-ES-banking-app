@@ -1,4 +1,4 @@
-package com.vtrbtf.minibank.account.application.event;
+package com.vtrbtf.minibank.account.event;
 
 import com.vtrbtf.minibank.account.aggregate.AccountType;
 import lombok.Value;

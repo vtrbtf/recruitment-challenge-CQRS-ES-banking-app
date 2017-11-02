@@ -1,4 +1,4 @@
-package com.vtrbtf.minibank.account.application.command.infrastructure;
+package com.vtrbtf.minibank.account.application.command.infrastructure.http.payload;
 
 import com.vtrbtf.minibank.account.application.command.model.MakeWithdraw;
 

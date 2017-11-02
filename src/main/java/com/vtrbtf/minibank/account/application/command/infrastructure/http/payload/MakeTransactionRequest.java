@@ -1,7 +1,8 @@
-package com.vtrbtf.minibank.account.application.command.infrastructure;
+package com.vtrbtf.minibank.account.application.command.infrastructure.http.payload;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.vtrbtf.minibank.account.application.command.model.CommandConverter;
 import com.vtrbtf.minibank.account.application.command.model.MakeTransaction;
 import lombok.AccessLevel;
 import lombok.Data;

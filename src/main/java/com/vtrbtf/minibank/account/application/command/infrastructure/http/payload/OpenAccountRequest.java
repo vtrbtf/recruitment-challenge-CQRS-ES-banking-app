@@ -1,8 +1,8 @@
-package com.vtrbtf.minibank.account.application.command.infrastructure;
+package com.vtrbtf.minibank.account.application.command.infrastructure.http.payload;
 
+import com.vtrbtf.minibank.account.application.command.model.CommandConverter;
 import com.vtrbtf.minibank.account.application.command.model.OpenAccount;
 import lombok.Value;
-import org.axonframework.commandhandling.TargetAggregateIdentifier;
 
 @Value
 public class OpenAccountRequest implements CommandConverter<OpenAccount> {

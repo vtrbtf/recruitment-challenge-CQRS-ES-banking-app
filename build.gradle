@@ -48,6 +48,7 @@ dependencies {
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	//testCompile('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
 	testCompile('io.projectreactor:reactor-test')
+	compile("org.springframework.boot:spring-boot-starter-hateoas")
 	testCompile group: 'org.axonframework', name: 'axon-test', version: '3.0.6'
 
 }
