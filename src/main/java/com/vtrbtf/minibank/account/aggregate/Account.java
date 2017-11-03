@@ -15,6 +15,7 @@ import org.axonframework.commandhandling.model.AggregateIdentifier;
 import org.axonframework.commandhandling.model.AggregateRoot;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,7 +47,7 @@ public class Account {
 
     @CommandHandler
     public void on(MakeWithdraw command){
-        apply(new AccountWithdrew(command.getId(), command.getDescription(), command.getValue()));
+        apply(new AccountWithdrew(command.getId(), command.getDescription(), command.getValue(), projectBalance(command.getValue())));
     }
 
     @EventSourcingHandler
@@ -56,11 +57,19 @@ public class Account {
 
     @CommandHandler
     public void on(MakeDeposit command){
-        apply(new AccountDeposited(command.getId(), command.getDescription(), command.getValue()));
+        apply(new AccountDeposited(command.getId(), command.getDescription(), command.getValue(), projectBalance(command.getValue())));
     }
 
     @EventSourcingHandler
     public void on(AccountDeposited event) {
         transactions.add(new Deposit(event));
+    }
+
+    public BigDecimal currentBalance() {
+        return BigDecimal.valueOf(transactions.stream().mapToDouble(t -> t.getValue().doubleValue()).sum());
+    }
+
+    private BigDecimal projectBalance(BigDecimal projectedTransactionValue) {
+        return currentBalance().add(projectedTransactionValue);
     }
 }

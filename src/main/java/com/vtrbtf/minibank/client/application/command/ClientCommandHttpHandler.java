@@ -19,7 +19,6 @@ public class ClientCommandHttpHandler {
     @PostMapping("/client")
     public ResponseEntity postClient(@RequestBody EnrollClient client) {
         String id = randomUUID().toString();
-        return ResponseEntity.ok().
-                location(URI.create(id)).build();
+        return ResponseEntity.ok().location(URI.create(id)).build();
     }
 }

@@ -1,4 +1,4 @@
-package com.vtrbtf.minibank.account.application.command.infrastructure.http.payload;
+package com.vtrbtf.minibank.account.application.command.http.payload;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;

@@ -1,14 +1,18 @@
-package com.vtrbtf.minibank.account.application.query.view;
+package com.vtrbtf.minibank.account.application.query.repository.view;
 
 import com.vtrbtf.minibank.account.event.AccountTransactionEvent;
-import lombok.Value;
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.experimental.FieldDefaults;
 
 import java.math.BigDecimal;
 
-@Value
+@Data @FieldDefaults(level = AccessLevel.PRIVATE)
 public class TransactionView {
     String name;
     BigDecimal value;
+
+    public TransactionView() { }
 
     public TransactionView(AccountTransactionEvent transaction) {
       name = transaction.getName();
