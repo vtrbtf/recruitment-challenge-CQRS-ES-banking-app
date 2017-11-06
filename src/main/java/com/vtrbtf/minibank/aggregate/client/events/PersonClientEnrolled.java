@@ -1,7 +1,7 @@
 package com.vtrbtf.minibank.aggregate.client.events;
 
 import com.vtrbtf.minibank.aggregate.client.Person;
-import com.vtrbtf.minibank.application.command.model.client.EnrollPerson;
+import com.vtrbtf.minibank.application.command.client.EnrollPerson;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor

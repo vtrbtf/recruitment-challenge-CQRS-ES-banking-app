@@ -1,6 +1,5 @@
 package com.vtrbtf.minibank.aggregate.client;
 
-import com.mongodb.gridfs.CLI;
 import com.vtrbtf.minibank.aggregate.client.account.Account;
 import com.vtrbtf.minibank.aggregate.client.account.AccountType;
 import com.vtrbtf.minibank.aggregate.client.account.events.AccountDeposited;
@@ -9,11 +8,7 @@ import com.vtrbtf.minibank.aggregate.client.account.events.AccountWithdrew;
 import com.vtrbtf.minibank.aggregate.client.events.ClientEnrolled;
 import com.vtrbtf.minibank.aggregate.client.events.CompanyClientEnrolled;
 import com.vtrbtf.minibank.aggregate.client.events.PersonClientEnrolled;
-import com.vtrbtf.minibank.application.command.model.account.MakeDeposit;
-import com.vtrbtf.minibank.application.command.model.account.MakeWithdraw;
-import com.vtrbtf.minibank.application.command.model.account.OpenAccount;
-import com.vtrbtf.minibank.application.command.model.client.EnrollCompany;
-import com.vtrbtf.minibank.application.command.model.client.EnrollPerson;
+import com.vtrbtf.minibank.application.command.client.*;
 import lombok.experimental.FieldDefaults;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.commandhandling.model.AggregateIdentifier;
@@ -30,25 +25,25 @@ import static org.axonframework.commandhandling.model.AggregateLifecycle.apply;
 @FieldDefaults(level = PRIVATE)
 public class Client {
     @AggregateIdentifier
-    String id;
+    String clientId;
     Holder holder;
     List<Account> accounts;
 
     private Client() { }
 
     @CommandHandler
-    public Client(EnrollCompany command){
+    public Client(EnrollCompany command) {
         apply(new CompanyClientEnrolled(command));
     }
 
     @CommandHandler
-    public Client(EnrollPerson command){
+    public Client(EnrollPerson command) {
         apply(new PersonClientEnrolled(command));
     }
 
     @EventSourcingHandler
     public void on(ClientEnrolled event) {
-        id = event.getClientId();
+        clientId = event.getClientId();
         holder = event.getHolder();
         accounts = new ArrayList<>();
     }
@@ -69,17 +64,17 @@ public class Client {
     }
 
     @CommandHandler
-    public void on(OpenAccount command){
+    public void on(OpenAccount command) {
         apply(new AccountOpened(command.getClientId(), command.getAccountId(), AccountType.valueOf(command.getType())));
     }
 
     @CommandHandler
-    public void on(MakeWithdraw command){
+    public void on(MakeWithdraw command) {
         apply(new AccountWithdrew(command.getClientId(), command.getAccountId(), command.getDescription(), command.getValue(), withAccount(command.getAccountId()).projectBalance(command.getValue())));
     }
 
     @CommandHandler
-    public void on(MakeDeposit command){
+    public void on(MakeDeposit command) {
         apply(new AccountDeposited(command.getClientId(), command.getAccountId(), command.getDescription(), command.getValue(), withAccount(command.getAccountId()).projectBalance(command.getValue())));
     }
 

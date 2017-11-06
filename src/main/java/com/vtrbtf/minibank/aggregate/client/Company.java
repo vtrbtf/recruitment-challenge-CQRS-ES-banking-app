@@ -1,9 +1,8 @@
 package com.vtrbtf.minibank.aggregate.client;
 
-import com.vtrbtf.minibank.application.command.model.client.EnrollCompany;
+import com.vtrbtf.minibank.application.command.client.EnrollCompany;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Value;
 
 @Data
 @NoArgsConstructor

@@ -1,6 +1,5 @@
 package com.vtrbtf.minibank.aggregate.client.account.transaction;
 
-import com.vtrbtf.minibank.aggregate.client.account.events.AccountTransactionEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.Value;
 import lombok.experimental.NonFinal;
@@ -13,9 +12,4 @@ import java.math.BigDecimal;
 public class Transaction {
     String name;
     BigDecimal value;
-
-    public Transaction(AccountTransactionEvent event) {
-        name = event.getName();
-        value = event.getValue();
-    }
 }

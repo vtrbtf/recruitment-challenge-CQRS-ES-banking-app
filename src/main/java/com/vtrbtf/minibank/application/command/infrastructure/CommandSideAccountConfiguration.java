@@ -25,9 +25,12 @@ import org.springframework.context.annotation.Configuration;
 public class CommandSideAccountConfiguration {
     public static final String EVENTS_DB = "minibank_events_db";
 
-    @Autowired @Qualifier("commandSideMongoClient") MongoClient client;
+    @Autowired
+    @Qualifier("commandSideMongoClient")
+    MongoClient client;
 
-    @Autowired Serializer serializer;
+    @Autowired
+    Serializer serializer;
 
     @Bean
     public CommandBus commandBus() {

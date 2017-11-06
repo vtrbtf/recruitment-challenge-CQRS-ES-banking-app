@@ -8,12 +8,15 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
+@lombok.Value
 public class EmailGateway {
-    @Value("${mailing.api.endpoint}")
     String emailAPI;
-
-    @Value("${mailing.api.key}")
     String emailAPIKey;
+
+    public EmailGateway(@Value("${mailing.api.endpoint}") String emailAPI, @Value("${mailing.api.key}") String emailAPIKey) {
+        this.emailAPI = emailAPI;
+        this.emailAPIKey = emailAPIKey;
+    }
 
     public void send(String subject, String text, String targetEmail) {
         JSONObject object = emailAPIPayload(subject, text, targetEmail);
@@ -31,12 +34,12 @@ public class EmailGateway {
 
     private JSONObject emailAPIPayload(String subject, String text, String targetEmail) {
         return new JSONObject().
-                    put("options", new JSONObject().put("sandbox", true)).
-                    put("content", new JSONObject().
-                            put("from", "sandbox@sparkpostbox.com").
-                            put("subject", subject).
-                            put("text", text)).
-                    put("recipients", new JSONArray().put(new JSONObject().put("address", targetEmail)));
+                put("options", new JSONObject().put("sandbox", true)).
+                put("content", new JSONObject().
+                        put("from", "sandbox@sparkpostbox.com").
+                        put("subject", subject).
+                        put("text", text)).
+                put("recipients", new JSONArray().put(new JSONObject().put("address", targetEmail)));
     }
 
 }
