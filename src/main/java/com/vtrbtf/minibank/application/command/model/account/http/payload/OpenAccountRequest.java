@@ -15,7 +15,7 @@ public class OpenAccountRequest implements CommandConverter<OpenAccount> {
     }
 
     @Override
-    public OpenAccount toCommand(String id) {
-        return new OpenAccount(id, clientId, type);
+    public OpenAccount toCommand(String accountId) {
+        return new OpenAccount(clientId, accountId, type);
     }
 }

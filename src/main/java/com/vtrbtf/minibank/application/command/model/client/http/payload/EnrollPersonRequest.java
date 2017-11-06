@@ -8,7 +8,7 @@ import lombok.Data;
 public class EnrollPersonRequest extends EnrollClientRequest {
     String CPF;
     @Override
-    public EnrollClient toCommand(String id) {
-        return new EnrollPerson(id, this);
+    public EnrollClient toCommand(String clientId) {
+        return new EnrollPerson(clientId, this);
     }
 }

@@ -1,6 +1,6 @@
-package com.vtrbtf.minibank.aggregate.account.transaction;
+package com.vtrbtf.minibank.aggregate.client.account.transaction;
 
-import com.vtrbtf.minibank.aggregate.account.events.AccountWithdrew;
+import com.vtrbtf.minibank.aggregate.client.account.events.AccountWithdrew;
 
 import java.math.BigDecimal;
 

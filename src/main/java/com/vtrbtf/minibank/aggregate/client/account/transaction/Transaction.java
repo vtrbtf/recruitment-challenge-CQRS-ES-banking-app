@@ -1,6 +1,6 @@
-package com.vtrbtf.minibank.aggregate.account.transaction;
+package com.vtrbtf.minibank.aggregate.client.account.transaction;
 
-import com.vtrbtf.minibank.aggregate.account.events.AccountTransactionEvent;
+import com.vtrbtf.minibank.aggregate.client.account.events.AccountTransactionEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.Value;
 import lombok.experimental.NonFinal;

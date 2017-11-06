@@ -7,8 +7,8 @@ import lombok.Data;
 @Data
 public class EnrollPerson extends EnrollClient {
     private String CPF;
-    public EnrollPerson(String id, EnrollPersonRequest request) {
-        super(id, request.getName());
+    public EnrollPerson(String clientId, EnrollPersonRequest request) {
+        super(clientId, request.getName());
         this.CPF = request.getCPF();
     }
 }

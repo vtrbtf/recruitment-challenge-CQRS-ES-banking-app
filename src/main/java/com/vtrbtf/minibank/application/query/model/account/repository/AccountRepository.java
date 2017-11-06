@@ -3,11 +3,11 @@ package com.vtrbtf.minibank.application.query.model.account.repository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
-import com.vtrbtf.minibank.application.query.infrastructure.Configuration;
+import com.vtrbtf.minibank.application.query.infrastructure.QuerySideConfiguration;
 import com.vtrbtf.minibank.application.query.model.account.repository.view.AccountView;
 import com.vtrbtf.minibank.application.query.model.account.repository.view.TransactionView;
-import com.vtrbtf.minibank.aggregate.account.events.AccountOpened;
-import com.vtrbtf.minibank.aggregate.account.events.AccountTransactionEvent;
+import com.vtrbtf.minibank.aggregate.client.account.events.AccountOpened;
+import com.vtrbtf.minibank.aggregate.client.account.events.AccountTransactionEvent;
 import lombok.Value;
 import lombok.experimental.NonFinal;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +28,8 @@ public class AccountRepository {
     ObjectMapper mapper = new ObjectMapper();
 
     @Autowired
-    public AccountRepository(@Qualifier("mongoDomainClient") MongoClient client) {
-        collection = client.getDatabase(Configuration.DOMAIN_DB).getCollection("account", AccountView.class);
+    public AccountRepository(@Qualifier("querySideMongoClient") MongoClient client) {
+        collection = client.getDatabase(QuerySideConfiguration.DOMAIN_DB).getCollection("account", AccountView.class);
     }
 
     public void save(AccountOpened account){
@@ -37,7 +37,7 @@ public class AccountRepository {
     }
 
     public void pushTransaction(AccountTransactionEvent transaction, BigDecimal balance){
-        collection.updateOne(eq("_id", transaction.getId()), combine(push("transactions", new TransactionView(transaction)), set("balance", balance)));
+        collection.updateOne(eq("_id", transaction.getAccountId()), combine(push("transactions", new TransactionView(transaction)), set("balance", balance)));
     }
 
     public AccountView get(String id){

@@ -7,8 +7,8 @@ import lombok.Data;
 public class EnrollCompany extends EnrollClient {
     String CNPJ;
 
-    public EnrollCompany(String id, EnrollCompanyRequest request) {
-        super(id, request.getName());
+    public EnrollCompany(String clientId, EnrollCompanyRequest request) {
+        super(clientId, request.getName());
         this.CNPJ = request.getCNPJ();
     }
 }

@@ -7,7 +7,7 @@ import org.axonframework.commandhandling.TargetAggregateIdentifier;
 @Value
 public class OpenAccount implements Command {
     @TargetAggregateIdentifier
-    String id;
     String clientId;
+    String accountId;
     String type;
 }

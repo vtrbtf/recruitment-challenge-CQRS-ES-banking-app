@@ -1,6 +1,6 @@
 package com.vtrbtf.minibank.application.query.model.account.repository.view;
 
-import com.vtrbtf.minibank.aggregate.account.events.AccountOpened;
+import com.vtrbtf.minibank.aggregate.client.account.events.AccountOpened;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
@@ -20,7 +20,7 @@ public class AccountView {
     public AccountView(){ }
 
     public AccountView(AccountOpened account) {
-        id = account.getId();
+        id = account.getAccountId();
         type = account.getType().name();
         balance = BigDecimal.ZERO;
         transactions = new ArrayList<>();

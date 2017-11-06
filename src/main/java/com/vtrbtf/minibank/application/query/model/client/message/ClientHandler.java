@@ -16,11 +16,11 @@ public class ClientHandler {
 
     @EventHandler
     public void on(PersonClientEnrolled event) {
-        repository.save(new PersonView(event.getType()));
+        repository.save(new PersonView(event.getHolder()));
     }
 
     @EventHandler
     public void on(CompanyClientEnrolled event) {
-        repository.save(new CompanyView(event.getType()));
+        repository.save(new CompanyView(event.getHolder()));
     }
 }

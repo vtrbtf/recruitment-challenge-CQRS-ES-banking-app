@@ -9,6 +9,6 @@ import org.axonframework.commandhandling.TargetAggregateIdentifier;
 @NonFinal
 public abstract class EnrollClient implements Command {
     @TargetAggregateIdentifier
-    String id;
+    String clientId;
     String name;
 }

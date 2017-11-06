@@ -1,6 +1,6 @@
 package com.vtrbtf.minibank.application.query.model.account.repository.view;
 
-import com.vtrbtf.minibank.aggregate.account.events.AccountTransactionEvent;
+import com.vtrbtf.minibank.aggregate.client.account.events.AccountTransactionEvent;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;

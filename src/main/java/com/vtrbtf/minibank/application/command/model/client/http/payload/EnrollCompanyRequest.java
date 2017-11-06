@@ -9,7 +9,7 @@ import lombok.Data;
 public class EnrollCompanyRequest extends EnrollClientRequest {
     String CNPJ;
     @Override
-    public EnrollClient toCommand(String id) {
-        return new EnrollCompany(id, this);
+    public EnrollClient toCommand(String clientId) {
+        return new EnrollCompany(clientId, this);
     }
 }

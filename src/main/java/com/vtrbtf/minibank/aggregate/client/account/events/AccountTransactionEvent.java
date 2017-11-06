@@ -1,15 +1,16 @@
-package com.vtrbtf.minibank.aggregate.account.events;
+package com.vtrbtf.minibank.aggregate.client.account.events;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import lombok.experimental.NonFinal;
 
 import java.math.BigDecimal;
 
 @Data
-@FieldDefaults(level = AccessLevel.PRIVATE)
 @AllArgsConstructor @NoArgsConstructor
 public class AccountTransactionEvent {
-    String id;
+    String clientId;
+    String accountId;
     String name;
     BigDecimal value;
     BigDecimal balance;

@@ -1,13 +1,13 @@
-package com.vtrbtf.minibank.aggregate.account.events;
+package com.vtrbtf.minibank.aggregate.client.account.events;
 
-import com.vtrbtf.minibank.aggregate.account.AccountType;
+import com.vtrbtf.minibank.aggregate.client.account.AccountType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data @NoArgsConstructor @AllArgsConstructor
 public class AccountOpened {
-    String id;
     String clientId;
+    String accountId;
     AccountType type;
 }

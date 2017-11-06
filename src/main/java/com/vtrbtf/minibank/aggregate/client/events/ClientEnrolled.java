@@ -7,6 +7,6 @@ import lombok.NoArgsConstructor;
 
 @Data @NoArgsConstructor @AllArgsConstructor
 public abstract class ClientEnrolled<T extends Holder> {
-    String id;
-    T type;
+    String clientId;
+    T holder;
 }

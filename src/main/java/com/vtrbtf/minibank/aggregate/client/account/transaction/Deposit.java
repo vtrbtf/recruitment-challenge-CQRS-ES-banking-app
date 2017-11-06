@@ -1,6 +1,6 @@
-package com.vtrbtf.minibank.aggregate.account.transaction;
+package com.vtrbtf.minibank.aggregate.client.account.transaction;
 
-import com.vtrbtf.minibank.aggregate.account.events.AccountDeposited;
+import com.vtrbtf.minibank.aggregate.client.account.events.AccountDeposited;
 import lombok.Value;
 
 import java.math.BigDecimal;

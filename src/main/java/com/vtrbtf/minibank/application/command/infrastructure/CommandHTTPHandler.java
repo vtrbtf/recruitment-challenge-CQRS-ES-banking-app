@@ -2,6 +2,7 @@ package com.vtrbtf.minibank.application.command.infrastructure;
 
 import org.axonframework.commandhandling.callbacks.FutureCallback;
 import org.axonframework.commandhandling.gateway.CommandGateway;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.UUID;
 
