@@ -5,7 +5,6 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.vtrbtf.minibank.application.query.client.repository.view.ClientView;
 import com.vtrbtf.minibank.application.query.infrastructure.QuerySideConfiguration;
-import lombok.RequiredArgsConstructor;
 import lombok.Value;
 import lombok.experimental.NonFinal;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +30,6 @@ public class ClientRepository {
     }
 
     public ClientView get(String id) {
-        return collection.find(eq("_id", id)).first();
+        return collection.find(eq("clientId", id)).first();
     }
 }

@@ -1,5 +1,6 @@
 package com.vtrbtf.minibank.aggregate.client.account;
 
+import com.vtrbtf.minibank.aggregate.client.exceptions.ClientException;
 import com.vtrbtf.minibank.aggregate.client.account.events.AccountDeposited;
 import com.vtrbtf.minibank.aggregate.client.account.events.AccountOpened;
 import com.vtrbtf.minibank.aggregate.client.account.events.AccountWithdrew;
@@ -7,13 +8,10 @@ import com.vtrbtf.minibank.aggregate.client.account.transaction.Deposit;
 import com.vtrbtf.minibank.aggregate.client.account.transaction.Transaction;
 import com.vtrbtf.minibank.aggregate.client.account.transaction.Withdraw;
 import lombok.Value;
-import lombok.experimental.FieldDefaults;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-
-import static lombok.AccessLevel.PRIVATE;
 
 
 @Value
@@ -50,5 +48,33 @@ public class Account {
 
     public BigDecimal projectBalance(BigDecimal projectedTransactionValue) {
         return currentBalance().add(projectedTransactionValue);
+    }
+
+    public void verifyBalanceAfterWithdraw(BigDecimal value) {
+        if (isNegativeNumber(projectBalance(value))) {
+            throw new ClientException("Not enough money");
+        }
+    }
+
+    private boolean isNegativeNumber(BigDecimal number) {
+        return number.compareTo(BigDecimal.ZERO) < 0;
+    }
+
+    private boolean isPositiveNumber(BigDecimal number) {
+        return number.compareTo(BigDecimal.ZERO) > 0;
+    }
+
+    private void verifyTransactionValue(boolean transactionCriteria, String message) {
+        if (!transactionCriteria) {
+            throw new ClientException(message);
+        }
+    }
+
+    public void verifyWithdrawValue(BigDecimal value) {
+        verifyTransactionValue(isNegativeNumber(value), "Withdraws should have a negative value");
+    }
+
+    public void verifyDepositValue(BigDecimal value) {
+        verifyTransactionValue(isPositiveNumber(value), "Deposits should have a positive value");
     }
 }

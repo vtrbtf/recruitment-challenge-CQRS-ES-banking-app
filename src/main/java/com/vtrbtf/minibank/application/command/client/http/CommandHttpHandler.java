@@ -31,6 +31,7 @@ public class CommandHttpHandler {
     @PostMapping
     public Future enrollClient(@RequestBody EnrollClientRequest client, UriComponentsBuilder uri) {
         String id = UUID();
+        System.out.println(client);
         return send(client.toCommand(id)).
                 thenApply(r -> created(locationURI(id, uri)).build()).toCompletableFuture();
     }
@@ -43,7 +44,7 @@ public class CommandHttpHandler {
                 thenApply(r -> created(locationURI(clientId, id, uri)).build()).toCompletableFuture();
     }
 
-    @PostMapping("/{accountId}/transactions")
+    @PostMapping("{clientId}/accounts/{accountId}/transactions")
     public Future makeTransaction(@PathVariable String clientId, @PathVariable String accountId,
                                   @RequestBody MakeTransactionRequest transaction) {
 

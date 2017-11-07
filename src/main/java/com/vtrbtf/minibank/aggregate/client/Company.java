@@ -1,6 +1,6 @@
 package com.vtrbtf.minibank.aggregate.client;
 
-import com.vtrbtf.minibank.application.command.client.EnrollCompany;
+import com.vtrbtf.minibank.application.command.client.EnrollCompanyClient;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 public class Company implements Holder {
     String CNPJ;
 
-    public Company(EnrollCompany command) {
+    public Company(EnrollCompanyClient command) {
         CNPJ = command.getCNPJ();
     }
 }

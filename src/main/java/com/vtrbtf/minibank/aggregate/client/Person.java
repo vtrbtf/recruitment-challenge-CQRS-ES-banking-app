@@ -1,6 +1,6 @@
 package com.vtrbtf.minibank.aggregate.client;
 
-import com.vtrbtf.minibank.application.command.client.EnrollPerson;
+import com.vtrbtf.minibank.application.command.client.EnrollPersonClient;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,7 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Person implements Holder {
     String CPF;
-    public Person(EnrollPerson command) {
+
+    public Person(EnrollPersonClient command) {
         CPF = command.getCPF();
     }
 }
